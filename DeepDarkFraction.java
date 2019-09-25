@@ -25,8 +25,8 @@ public class DeepDarkFraction {
 
         //因为是化简，所以要除以最大公约数
         int c = gcd(a, b);
-        a /= a;
-        b /= a;
+        a /= c;
+        b /= c;
 
         return new int[]{b, a};
     }
