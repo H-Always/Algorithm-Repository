@@ -15,9 +15,6 @@ public class TestAlgorithm {
 
         String s = "hello,world,,mirror,,apple,incisive,include,contain";
 
-
-        String[] a = s.split(",");
-
         ReverseWord ys = new ReverseWord();
         String[] res = ys.reverseWord(s);
 
