@@ -12,6 +12,7 @@ public class TestAlgorithm {
 
     public static void main(String[] args) {
         DeepDarkFraction ys = new DeepDarkFraction();
+        
         int[] cont = {3, 2, 0, 2};
         int[] res = ys.deepDarkFraction(cont);
 
