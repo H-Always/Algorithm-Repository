@@ -4,7 +4,7 @@ package AlgorithmPackge;
  * @Description: TODO 分式化简
  * @Author 余霜
  * @Date 2019/9/25
- * @Version V1.0
+ * @Version V1.1
  **/
 public class DeepDarkFraction {
     public static int[] deepDarkFraction(int[] cont) {
@@ -12,7 +12,7 @@ public class DeepDarkFraction {
         //分子为1 因为默认的取最后一个数，当然是几分之一
         int a = 1;
         //分母
-        int b = cont[length - 1];d
+        int b = cont[length - 1];
         //计算的时候是一个整数加上一个分数，所以分母是原来分子加上整数*分母
         //然后翻转，变成倒数，继续运算
         //这里注意，运算完的结果一定多执行了一次反转，最后要反转回来
