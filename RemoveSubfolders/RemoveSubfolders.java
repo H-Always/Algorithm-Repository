@@ -52,6 +52,7 @@ public class RemoveSubfolders {
         result.add(root);
         while (!que.isEmpty()) {
             String next = que.poll();
+            assert root != null;
             if (next.startsWith(root) && next.charAt(root.length()) == '/') {
                 continue;
             }
