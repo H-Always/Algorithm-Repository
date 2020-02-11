@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @Description: 跳台阶
  * @Author: 余霜
  * @date: 2020/2/9/14:55
- * @Version: 1.0
+ * @Version: 1.1
  *
  * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
  *
@@ -35,7 +35,7 @@ import java.util.ArrayList;
  */
 
 public class ClimbStairs {
-    public int climbStair(int n){
+    public long climbStair(int n){
         if (n<=1)
             return 1;
         if (n==2)
@@ -43,10 +43,10 @@ public class ClimbStairs {
 
         //这个题算是一道最简单的动态规划了吧
         //初始条件，一个1，一个2，因为从这一位起，每一次都需要前两次的计算结果
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Long> list = new ArrayList<>();
 
-        list.add(1);
-        list.add(2);
+        list.add(1L);
+        list.add(2L);
 
         //判断条件，list的长度即为当前已经跳了多少台阶，那么把对应的前两位加一下就好
         while(list.size()<n){
