@@ -72,7 +72,7 @@ public class LengthOfLongestSubstring {
                 begin = Math.max(map.get(temp), begin);
             }
             //max = Math.max(max, end - begin + 1);
-            max = (end - begin + 1)>max?end - begin + 1:max;
+            max = Math.max((end - begin + 1), max);
             //key:字母   value:不重复的下标，这里不重复是为了寻找begin的位置
             map.put(s.charAt(end), end + 1);
         }
