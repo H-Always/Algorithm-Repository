@@ -167,7 +167,6 @@ public class IntToRoman {
 
             if (num/4!=0) {
                 sb.append("IV");
-                num = num/4;
                 break;
             }
 
