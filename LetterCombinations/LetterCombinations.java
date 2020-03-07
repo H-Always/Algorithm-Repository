@@ -21,6 +21,22 @@ import java.util.List;
  * 尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。
  */
 
+/*
+  这个算法用到了parseInt方法
+  说一下Integer的parseInt和valueOf的区别
+  两个方法都可以把数字类型字符串转成int类型整数，但是这两个方法还是有一点区别的，
+  valueOf(String s)方法调用了parseInt(String s, int radix)方法，
+  而parseInt(String s, int radix)方法返回值是一个int类型的值，
+  之后又调用了valueOf(int i)方法将int进行了装箱返回包装类型Integer。
+  所以如果你不需要返回包装类型，可以直接调用parseInt(String s)方法，效率更高。
+
+  valueOf源码:
+  public static Integer valueOf(String s) throws NumberFormatException {
+    return Integer.valueOf(parseInt(s, 10));
+  }
+ */
+
+
 //这题看到就想到了回溯，但是暴力解比较好写，有空我补上
 public class LetterCombinations {
 
@@ -48,6 +64,7 @@ public class LetterCombinations {
         };
 
         //取一下数字，这个方法是字符串转换数字，如果字符串不规范的话可以用正则表达式
+
         int num = Integer.parseInt(digits);
 
         //创建结果集
