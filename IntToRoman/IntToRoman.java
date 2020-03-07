@@ -58,10 +58,9 @@ public class IntToRoman {
 
         //这里的13是因为数组的长度最大13，也就说，只有十三种情况，无论如何13次遍历都会出结果
         //这个算法时间复杂度为O(1)，别看两个循环只执行常数次
-        for (int i = 0; i < 13; i ++ )
+        for (int i = 0; i < 13; i++)
             //从最大开始减小数字，添加到结果字符串中
-            while(num >=keys[i] )
-            {
+            while (num >= keys[i]) {
                 num -= keys[i];
                 sb.append(values[i]);
             }
@@ -77,10 +76,10 @@ public class IntToRoman {
         // 把所有可能出现的可能都规划到一张表中
         // 因为题目最大给出只有四位数，所以数组最大深度为4
         String[][] c = {
-                {"","I","II","III","IV","V","VI","VII","VIII","IX"},
-                {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"},
-                {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"},
-                {"","M","MM","MMM"}
+                {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
+                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
+                {"", "M", "MM", "MMM"}
         };
 
         //返回的结果直接就是每一位对应的罗马数字，千位多少，百位多少以此类推
@@ -92,80 +91,80 @@ public class IntToRoman {
     }
 
     //暴力解,这个没什么好说的，按照题目定义循环就完事了
-    public String intToRoman_BF(int num) {
+    public String intToRoman_BFIf(int num) {
 
-        if (num == 1){
+        if (num == 1) {
             return "I";
         }
 
         StringBuilder sb = new StringBuilder();
 
-        while(num>=1){
-            if (num/1000!=0) {
-                sb.append("M".repeat(num/1000));
-                num = num%1000;
+        while (num >= 1) {
+            if (num / 1000 != 0) {
+                sb.append("M".repeat(num / 1000));
+                num = num % 1000;
                 continue;
             }
 
-            if (num/900!=0) {
+            if (num / 900 != 0) {
                 sb.append("CM");
-                num = num%900;
+                num = num % 900;
                 continue;
             }
 
-            if (num/500!=0) {
+            if (num / 500 != 0) {
                 sb.append("D");
-                num = num%500;
+                num = num % 500;
                 continue;
             }
-            if (num/400!=0) {
+            if (num / 400 != 0) {
                 sb.append("CD");
-                num = num%400;
+                num = num % 400;
                 continue;
             }
 
-            if (num/100!=0) {
-                sb.append("C".repeat(num/100));
-                num = num%100;
+            if (num / 100 != 0) {
+                sb.append("C".repeat(num / 100));
+                num = num % 100;
                 continue;
             }
 
-            if (num/90!=0) {
+            if (num / 90 != 0) {
                 sb.append("XC");
-                num = num%90;
+                num = num % 90;
                 continue;
             }
 
-            if (num/50!=0) {
+            if (num / 50 != 0) {
                 sb.append("L");
-                num = num%50;
+                num = num % 50;
                 continue;
             }
 
-            if (num/40!=0) {
+            if (num / 40 != 0) {
                 sb.append("XL");
-                num = num%40;
+                num = num % 40;
                 continue;
             }
 
-            if (num/10!=0) {
-                sb.append("X".repeat(num/10));
-                num = num%10;
+            if (num / 10 != 0) {
+                sb.append("X".repeat(num / 10));
+                num = num % 10;
                 continue;
             }
 
-            if (num/9!=0){
+            if (num / 9 != 0) {
                 sb.append("IX");
-                num = num%9;
+                num = num % 9;
                 continue;
             }
-            if (num/5!=0) {
+            if (num / 5 != 0) {
                 sb.append("V");
-                num = num%5;
+                num = num % 5;
                 continue;
             }
 
-            if (num/4!=0) {
+            if (num / 4 != 0) {
                 sb.append("IV");
                 break;
             }
@@ -176,5 +175,148 @@ public class IntToRoman {
         }
 
         return sb.toString();
+    }
+
+    //这是最后一种写法了，也是暴力解，效率应该还不错？就是写起来比较麻烦，本质上和if一样
+    public String intToRoman_BFSwitch(int num) {
+        int a = num % 10;
+        num /= 10;
+        int b = num % 10;
+        num /= 10;
+        int c = num % 10;
+        num /= 10;
+        int d = num % 10;
+        return num4(d) + num3(c) + num2(b) + num1(a);
+
+    }
+
+    private String num4(int n) {
+        String res = "";
+        switch (n) {
+            case 1:
+                res = "M";
+                break;
+            case 2:
+                res = "MM";
+                break;
+            case 3:
+                res = "MMM";
+                break;
+            case 0:
+                res = "";
+                break;
+        }
+        return res;
+    }
+
+    private String num3(int n) {
+        String res = "";
+        switch (n) {
+            case 1:
+                res = "C";
+                break;
+            case 2:
+                res = "CC";
+                break;
+            case 3:
+                res = "CCC";
+                break;
+            case 4:
+                res = "CD";
+                break;
+            case 5:
+                res = "D";
+                break;
+            case 6:
+                res = "DC";
+                break;
+            case 7:
+                res = "DCC";
+                break;
+            case 8:
+                res = "DCCC";
+                break;
+            case 9:
+                res = "CM";
+                break;
+            case 0:
+                res = "";
+                break;
+        }
+        return res;
+    }
+
+    private String num2(int n) {
+        String res = "";
+        switch (n) {
+            case 1:
+                res = "X";
+                break;
+            case 2:
+                res = "XX";
+                break;
+            case 3:
+                res = "XXX";
+                break;
+            case 4:
+                res = "XL";
+                break;
+            case 5:
+                res = "L";
+                break;
+            case 6:
+                res = "LX";
+                break;
+            case 7:
+                res = "LXX";
+                break;
+            case 8:
+                res = "LXXX";
+                break;
+            case 9:
+                res = "XC";
+                break;
+            case 0:
+                res = "";
+                break;
+        }
+        return res;
+    }
+
+    private String num1(int n) {
+        String res = "";
+        switch (n) {
+            case 1:
+                res = "I";
+                break;
+            case 2:
+                res = "II";
+                break;
+            case 3:
+                res = "III";
+                break;
+            case 4:
+                res = "IV";
+                break;
+            case 5:
+                res = "V";
+                break;
+            case 6:
+                res = "VI";
+                break;
+            case 7:
+                res = "VII";
+                break;
+            case 8:
+                res = "VIII";
+                break;
+            case 9:
+                res = "IX";
+                break;
+            case 0:
+                res = "";
+                break;
+        }
+        return res;
     }
 }
