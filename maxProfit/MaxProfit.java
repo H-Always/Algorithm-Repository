@@ -31,7 +31,24 @@
 public class MaxProfit {
     public int maxProfit(int[] prices){
 
+        //这题是一个典型的双指针，首先明确一点，只有下一天的价格比前面低才可以获得利润，否则的话就要往下推一天
+        //如果下一天的获得了利润，证明当前一天价格较低，j继续往下遍历价格，当遍历到比当前的价格还要低的时候就跳转到当前天
+        //这样就满足了遍历一遍就把所有可能获利的结果都判断出来了
+        int i = 0,j = 0,max = 0;
+        while (j<prices.length){
+            //当前日期的价格要比下一天高，没有利润可以获取
+            if (prices[i]>prices[j]){
+                i=j;
+                j++;
+                continue;
+            }
 
-        return 0;
+            //判断是否是最大利润
+            max = Math.max(max,prices[j]-prices[i]);
+            j++;
+        }
+
+        return max;
     }
 }
+
