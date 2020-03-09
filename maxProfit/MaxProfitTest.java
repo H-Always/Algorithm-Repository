@@ -8,5 +8,9 @@
 public class MaxProfitTest {
     public static void main(String[] args) {
 
+        MaxProfit ys = new MaxProfit();
+
+        System.out.println(ys.maxProfit(new int[]{7,1,5,3,6,4}));
+
     }
 }
