@@ -1,6 +1,6 @@
 /**
  * @ClassName: ListNode
- * @Description: 链表文件
+ * @Description: 链表结构
  * @Author: 余霜
  * @date: 2020/2/6/17:43
  * @Version: 1.0
