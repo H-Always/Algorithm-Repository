@@ -32,6 +32,18 @@
 
     //一定注意，最长大径不一定经过根节点
 
+    /*
+    //Definition for a binary tree node.
+    public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {val = x;}
+    }
+     */
+
+
 public class DiameterOfBinaryTree {
     int maxDiameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
