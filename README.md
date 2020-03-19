@@ -1,4 +1,5 @@
 # Algorithm-Repository/Java
+### [这个分支已不再使用，作者整理了一个全新的库，点击跳转](https://github.com/H-Always/Algorithm-Repository)
 #### 本科在读，有时间会在网上找一些简单的算法题目写一些
 #### 适合新手，以及像我一样菜的人_(:з」∠)_
 #### 点击文件后面对应的文字可以看到算法对应的题目
