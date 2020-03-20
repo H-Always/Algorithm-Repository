@@ -49,7 +49,7 @@ public class GetLeastNumbers {
     //快速排序，快速排序的本质就是分区，随机确定一个值，以这个数值为中心，排序，左边的比他小，右边的比他大，
     //这样就达到了宏观排序，那么在对两边分别进行上述分区操作，直到不可分
     public static void quickSort(int[] arr, int L, int R) {
-        if(L < R) {
+        if (L < R) {
             // 把数组中随机的一个元素与最后一个元素交换，这样以最后一个元素作为基准值实际上就是以数组中随机的一个元素作为基准值
             // Random().nextInt()这函数是去一个随机，比如Random().nextInt(10），就是取一个0-9的随机数
             swap(arr, new Random().nextInt(R - L + 1) + L, R);
@@ -61,9 +61,9 @@ public class GetLeastNumbers {
 
     /**
      * 分区的过程，整数数组 arr 的[L, R]部分上，使得：
-     *  大于 arr[R] 的元素位于[L, R]部分的右边，但这部分数据不一定有序
-     *  小于 arr[R] 的元素位于[L, R]部分的左边，但这部分数据不一定有序
-     *  等于 arr[R] 的元素位于[L, R]部分的中间
+     * 大于 arr[R] 的元素位于[L, R]部分的右边，但这部分数据不一定有序
+     * 小于 arr[R] 的元素位于[L, R]部分的左边，但这部分数据不一定有序
+     * 等于 arr[R] 的元素位于[L, R]部分的中间
      * 返回等于部分的第一个元素的下标和最后一个下标组成的整数数组
      */
     public static int[] partition(int[] arr, int L, int R) {
@@ -71,8 +71,8 @@ public class GetLeastNumbers {
         int basic = arr[R]; //整个遍历过程实际上只有L作为指针遍历，其他成分都是辅助交换
         int less = L - 1;   //这个下标指向的元素一定比基准值小，
         int more = R + 1;   //这个下标指向的元素一定比基准值大
-        while(L < more) {
-            if(arr[L] < basic) {
+        while (L < more) {
+            if (arr[L] < basic) {
                 swap(arr, ++less, L++);
             } else if (arr[L] > basic) {
                 swap(arr, --more, L);
@@ -83,7 +83,7 @@ public class GetLeastNumbers {
         }
 
         //返回的是中线位置，这中间的数字一定相等
-        return new int[] { less + 1, more - 1 };
+        return new int[]{less + 1, more - 1};
 
     }
 
@@ -98,10 +98,13 @@ public class GetLeastNumbers {
      * arr[j] = arr[i]-arr[j];
      * arr[i] = arr[i]-arr[j];
      * 这个同理，比如交换i，j都为3，那么第一次arr[3]就会为6，然后自己减自己，这个位置就会变成0
+     * 如果真的想使用位运算啥的，就多家一个判断条件
      */
     public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        if (arr[i] != arr[j]) {
+            arr[i] ^= arr[j];
+            arr[j] ^= arr[i];
+            arr[i] ^= arr[j];
+        }
     }
 }
