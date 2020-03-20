@@ -40,9 +40,7 @@ public class GetLeastNumbers {
 
         int[] res = new int[k];
 
-        for (int i = 0; i < k; i++) {
-            res[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, res, 0, k);
 
         return res;
     }
