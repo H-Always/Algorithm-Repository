@@ -32,9 +32,9 @@ public class CoinChange {
         Arrays.fill(dp,1,dp.length,Integer.MAX_VALUE);
 
         for (int i = 1; i < dp.length; i++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (i>=coins[j] && dp[i-coins[j]]!=Integer.MAX_VALUE){
-                    dp[i] = Math.min(dp[i-coins[j]]+1,dp[i]);
+            for (int coin : coins) {
+                if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
                 }
             }
         }
