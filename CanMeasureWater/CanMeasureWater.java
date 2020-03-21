@@ -72,9 +72,6 @@ public class CanMeasureWater {
 
 
 
-
-
-
     //写都写出来了，放着吧...
     public boolean canMeasureWater_maxCount(int x, int y, int z) {
         int abs = Math.abs(x-y);
