@@ -44,7 +44,7 @@ public class NumRookCaptures {
 
     public int numRookCaptures(char[][] board) {
         // 定义上下左右四个方向,这四个是成对出现的，
-        // 比如dx[0],dy[0],就是{i-1,j},代表想左移动
+        // 比如dx[0],dy[0],就是{i-1,j},代表向左移动
         int[] move_x = {-1, 1, 0, 0};
         int[] move_y = {0, 0, -1, 1};
 
