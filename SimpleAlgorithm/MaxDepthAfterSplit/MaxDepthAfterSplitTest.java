@@ -9,9 +9,12 @@ import java.util.Arrays;
  **/
 public class MaxDepthAfterSplitTest {
     public static void main(String[] args) {
-        abc();
+        MaxDepthAfterSplit ys = new MaxDepthAfterSplit();
+        ys.maxDepthAfterSplit("()(()())");
     }
 
+
+    //对优先级不懂得，可以跑一跑下面的代码
     public static void abc() {
         int a = 0;
 
