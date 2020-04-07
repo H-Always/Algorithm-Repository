@@ -17,9 +17,9 @@ public class RotateTest {
         Rotate ys = new Rotate();
         ys.rotate(matrix);
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j]+"\t");
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                System.out.print(anInt+"\t");
             }
             System.out.println();
         }
