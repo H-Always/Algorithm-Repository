@@ -12,6 +12,6 @@ public class CoinChangeTest {
         int[] coins = {5,3,7};
 
 
-        System.out.println(ys.coinChange(coins,6442));
+        System.out.println(ys.coinChange(coins,43));
     }
 }
