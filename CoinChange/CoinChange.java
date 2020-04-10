@@ -26,15 +26,23 @@ import java.util.Arrays;
 // 等本菜学会了贪心算法的时候来填坑
 public class CoinChange {
     public int coinChange(int[] coins, int amount) {
+
+        //这里的金钱数+1，比如5块钱，要最大可以遍历到[5]，那么理所当然要写成new int[6]
         int[] dp = new int[amount+1];
 
+        //初始化，0元只能由0个硬币拼成，剩下的都默认拼不成
         dp[0] = 0;
         Arrays.fill(dp,1,dp.length,Integer.MAX_VALUE);
 
+        //循环，
         for (int i = 1; i < dp.length; i++) {
             for (int coin : coins) {
+                // 这里的判断条件，第一个是当前的钱一定要小于等于硬币的面额。三块钱只能由小于等于三块钱的硬币拼出来
+                // 第二个是如果前一个位置的硬币数是不能默认值(也就是拼不成)，如果前面一个金额拼不成，那么后面也没法拼成,
+                //          就是硬币面额为5，要拼出6块钱，没办法从1块钱的基础上拼出来
                 if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
                     dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
+                    System.out.println(Arrays.toString(dp));
                 }
             }
         }
