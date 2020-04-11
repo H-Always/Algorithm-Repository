@@ -6,7 +6,13 @@
  * @Version: V1.0
  **/
 public class ReverseWordsTest {
+
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        ReverseWords ys = new ReverseWords();
+
+
+        String s = "   hello world              mirror   apple  incisive  include   contain  ";
+        System.out.println(s);
+        System.out.println(ys.reverseWords(s));
     }
 }
