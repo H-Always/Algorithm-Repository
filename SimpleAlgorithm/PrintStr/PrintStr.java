@@ -9,9 +9,9 @@ import java.util.Stack;
  * @Version: V1.0
  **/
 
-// 这是我一个同学问我的题，他今天面试，面试官说的这个题，问他能想出来几种方法...
+// 这是我上铺问我的题，他今天面试，面试官说的这个题，问他能想出来几种方法...
 // 我没太想，暂时就这五种，别的高级方法不一定想得出来，这五个不是有手就行...
-// 我把它喷了一顿给他说了一遍
+// 他原来还挺愿意问我题的QAQ，我把它喷了一顿给他说了一遍
 
 public class PrintStr {
     // 递归
@@ -27,7 +27,6 @@ public class PrintStr {
 
         System.out.print(str.charAt(i));
     }
-
 
     // 迭代转字符串打印
     public void printStr1(String str){
