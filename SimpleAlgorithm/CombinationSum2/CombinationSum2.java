@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,24 +29,25 @@ import java.util.List;
  * ]
  **/
 
-
+// 这是我一个朋友找我写的算法，本质上和那个题一样，把double换成int就行
 public class CombinationSum2 {
 
     // data 为银行流水原数据，但必须是纯数字（非负数），
     // target是目标业务总和
-    public List<List<Integer>> combinationSum2(int[] data, int target,boolean degaultFlag) {
+    public List<List<Double>> combinationSum2(double[] data, double target,boolean degaultFlag) {
         // 长度控制回溯的深度
         int len = data.length;
         // 结果集
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Double>> res = new ArrayList<>();
         if (len == 0) {
             return res;
         }
 
         // 首先数组排序，如果数据结构不是非纯数字形式，找一个map映射一下
         Arrays.sort(data);
+        //System.out.println(Arrays.toString(data));
         // 双向队列，比较好用，只能操作头尾，其余不可更改
-        Deque<Integer> path = new ArrayDeque<>(len);
+        Deque<Double> path = new ArrayDeque<>(len);
         dfs(data, len, 0, target, path, res, degaultFlag);
         return res;
     }
@@ -51,13 +55,14 @@ public class CombinationSum2 {
     //成功标志，
     static boolean flag = false;
 
-    private void dfs(int[] data, int len, int begin, int target, Deque<Integer> path, List<List<Integer>> res,boolean degaultFlag) {
+    private void dfs(double[] data, int len, int begin, double target, Deque<Double> path, List<List<Double>> res,boolean degaultFlag) {
+
 
         if (flag) return;
 
         // 出口，如果存在匹配的银行流水，则立刻添加结果集并返回上一层
         if (target == 0) {
-            flag = !degaultFlag;
+            flag = degaultFlag;
             res.add(new ArrayList<>(path));
             return;
         }
@@ -86,7 +91,13 @@ public class CombinationSum2 {
             // 添加完元素进行下一层判断是否用重复的
             // 因为元素不可以重复使用，这里递归传递下去的是 i + 1 而不是 i
             // 想重复的话，变成i就可以了
-            dfs(data, len, i + 1, target - data[i], path, res,degaultFlag);
+            //System.out.println(path);
+            double d = target - data[i];
+            BigDecimal bd = new BigDecimal(d);
+            double tar = bd.setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+            //System.out.println(d);
+            dfs(data, len, i + 1,tar, path, res,degaultFlag);
 
             // 当执行到这里，证明上一次添加的元素(尾元素)被利用完毕，那么把他去掉，换另一个元素
             path.removeLast();
